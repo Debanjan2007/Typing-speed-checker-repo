@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #727D73;
+}
+.main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #D0DDD0;
+}
+.finalResult{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.result{
+    display: none;
+}
+.noshow{
+    display: none;
+}
+.hero-sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0D7;
+    gap: 2rem;
+    border: 0.13rem solid #727D73;
+    height: 18rem;
+    max-width: 60rem;
+    padding: 1rem 2rem 1rem 2rem ;
+}
+.hero-sec button{
+    cursor: pointer;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 0.32rem;
+    background-color: #AAB99A;
+    border: 0.08rem solid #727D73;
+}
+.userinp textarea{
+    min-height: 15rem ;
+    width: 60rem;
+    font-family: monospace;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #F0F0D7;
+    border: 0.13rem solid #727D73;
+}

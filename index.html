@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing speed checker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h2>Welcome</h2>
+        <p>Check your typing speed</p>
+      </div>
+      <div class="hero-sec">
+        <div class="para">
+          <button class="generate" onclick="genpara()" style="width: 8rem">generate paragraph</button>
+        </div>
+        <div class="timer">
+          <div class="timerinto">
+            <p style="text-align: center; margin-bottom: 0.5rem">00:00:00</p>
+          </div>
+          <div class="btn">
+            <button class="start" onclick="start()">start</button>
+            <button class="stop" onclick="stop()">stop</button>
+            <button class="reset" onclick="reset()">reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="userinp noshow">
+        <textarea name="userinp-para" id="userinput"></textarea>
+      </div>
+    </div>
+    <div class="result">
+      <div class="congo"><p id="resultExp">Congrats!</p></div>
+      <div class="wpm">
+        <div class="userans"></div>
+        <div class="resWpm"></div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
