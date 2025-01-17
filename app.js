@@ -7,7 +7,7 @@ let data;
 let totalWords = 0;
 let arr = [];
 const URL =
-  "https://baconipsum.com/api/?type=meat-and-filler&paras=1&format=text";
+  "https://randomwordgenerator.com/json/paragraphs.json?number=1";
 
 const genpara = async () => {
   userinputBox.classList.remove("noshow");
@@ -15,20 +15,16 @@ const genpara = async () => {
   data = await response.text();
   para.textContent = data;
   genbtn.classList.add("noshow");
-
-  // Pass the data (string) to the wordChecker function instead of spreading into characters
   wordChecker(data);
 };
 
-// Check how many words are in the random text generated
 const wordChecker = (text) => {
-  const wordsArray = text.split(/\s+/); // Split text by spaces (including multiple spaces)
-  const filteredWords = wordsArray.filter((word) => word.length > 0); // Filter out empty strings
+  const wordsArray = text.split(/\s+/); 
+  const filteredWords = wordsArray.filter((word) => word.length > 0);
   totalWords = filteredWords.length;
   console.log(`Total words: ${totalWords}`);
 };
 
-//Timer for user (actually not timer it is a stopwatch for now!)
 let timer = null;
 let startTime = 0;
 let elapsedTime = 0;
