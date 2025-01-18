@@ -48,8 +48,6 @@
 .userinp textarea{
     min-height: 15rem ;
     width: 60rem;
-    font-family: monospace;
-    font-size: 1rem;
     padding: 1rem;
     background-color: #F0F0D7;
     border: 0.13rem solid #727D73;
