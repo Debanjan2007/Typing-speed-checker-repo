@@ -34,6 +34,7 @@
     gap: 2rem;
     border: 0.13rem solid #727D73;
     height: 18rem;
+    min-width: 8rem;
     max-width: 60rem;
     padding: 1rem 2rem 1rem 2rem ;
 }
