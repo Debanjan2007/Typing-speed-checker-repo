@@ -1,3 +1,4 @@
+import { Text }  from "./randomText";
 let result = document.querySelector(".result");
 let para = document.querySelector(".para");
 let userinputBox = document.querySelector(".userinp");
@@ -6,25 +7,25 @@ let dispTimer = document.querySelector(".timerinto");
 let data;
 let totalWords = 0;
 let arr = [];
-const URL =
-  "https://randomwordgenerator.com/json/paragraphs.json?number=1";
 
-const genpara = async () => {
+const genpara = () => {
   userinputBox.classList.remove("noshow");
-  let response = await fetch(URL);
-  data = await response.text();
-  para.textContent = data;
+  let textKey = Math.floor(Math.random() * 9) + 1;
+  console.log(textKey);
+  data = Text.textKey ;
+  console.log(data);
   genbtn.classList.add("noshow");
-  wordChecker(data);
+  // wordChecker(data);
 };
 
 const wordChecker = (text) => {
   const wordsArray = text.split(/\s+/); 
-  const filteredWords = wordsArray.filter((word) => word.length > 0);
+  const filteredWords = wordsArray.filter((word) => word.length > 0); 
   totalWords = filteredWords.length;
   console.log(`Total words: ${totalWords}`);
 };
 
+//Timer for user (actually not timer it is a stopwatch for now!)
 let timer = null;
 let startTime = 0;
 let elapsedTime = 0;
