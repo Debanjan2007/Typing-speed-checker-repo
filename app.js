@@ -15,18 +15,15 @@ let userInputedWords = 0;
 let textKey = 0;
 let sec = 0;
 let min = 0;
-let currenTime = 0;
-let speedWPM = 0;
+let currenTime;
 
 function generateTxt() {
   userinputBox.classList.remove("noshow");
   textKey = Math.floor(Math.random() * 9);
-  console.log(textKey);
   genbtn.classList.add("noshow");
   data = Text[textKey];
-  console.log(data);
   para.textContent = data;
-  wordChecker(data, totalWords);
+  wordChecker(data);
   setTimeout(start(), 3000);
   userInputText.focus();
 }
@@ -35,9 +32,11 @@ genbtn.addEventListener("click", generateTxt);
 // Word checker how many words are there in any text 
 // This wordchecker part have done by gpt cause my logic has failed to count the words properly that programe always count more that actual words
 
-const wordChecker = (text, wordvar) => {
-  wordvar = text.trim().split(/\s+/).filter(Boolean).length;
-  console.log(`Total words: ${wordvar}`);
+const wordChecker = (text) => {
+  const wordsArray = text.split(/\s+/); 
+  const filteredWords = wordsArray.filter((word) => word.length > 0); 
+  userInputedWords = filteredWords.length;
+  console.log(`Total words: ${userInputedWords}`);
 };
 
 // Timer for user
@@ -47,16 +46,7 @@ const start = () => {
     if (sec === 60) {
       sec = 0;
       min++;
-    } else if (min === 1) {
-      sec = 0;
-      stop();
-      return;
-    } else {
-      if (sec < 10) {
-        timer.innerText = `${min}:0${sec}`;
-      } else {
-        timer.innerText = `${min}:${sec}`;
-      }
+      stop()
     }
     if (sec < 10) {
       timer.innerText = `${min}:0${sec}`;
@@ -75,16 +65,17 @@ const stop = () => {
   speedCheck();
 };
 timerCountStop.addEventListener("click", stop);
+
 function speedCheck() {
   if (userInputText.value === "") {
     alert("Please enter some text first!");
   } else {
     alert("Time's up!");
-    wordChecker(userInputText.value, userInputedWords);
+    wordChecker(userInputText.value);
     let second = min * 60 + sec; // 1 * 60 + 0 this will happen
     console.log(second);
     if (second > 0) {
-      speedWPM = Math.floor((userInputedWords * 60) / second);
+      let speedWPM = Math.floor((userInputedWords * 60) / second);
       console.log(`Speed: ${speedWPM} WPM`);
     } else {
       console.log("Cannot calculate speed, time is zero.");
