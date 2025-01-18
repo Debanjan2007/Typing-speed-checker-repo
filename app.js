@@ -19,7 +19,7 @@ let currenTime;
 
 function generateTxt() {
   userinputBox.classList.remove("noshow");
-  textKey = Math.floor(Math.random() * 9);
+  textKey = Math.floor(Math.random() * 15);
   genbtn.classList.add("noshow");
   data = Text[textKey];
   para.textContent = data;
