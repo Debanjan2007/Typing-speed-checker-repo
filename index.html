@@ -14,16 +14,15 @@
       </div>
       <div class="hero-sec">
         <div class="para">
-          <button class="generate" onclick="genpara()" style="width: 8rem">generate paragraph</button>
+          <button class="generate" style="width: 8rem">generate paragraph</button>
         </div>
-        <div class="timer">
+        <div class="timer-sec">
           <div class="timerinto">
-            <p style="text-align: center; margin-bottom: 0.5rem">00:00:00</p>
+            <p style="text-align: center; margin-bottom: 0.5rem" class="timer">00:00</p>
           </div>
           <div class="btn">
-            <button class="start" onclick="start()">start</button>
-            <button class="stop" onclick="stop()">stop</button>
-            <button class="reset" onclick="reset()">reset</button>
+            <button class="stop">stop</button>
+            <button class="reset">reset</button>
           </div>
         </div>
       </div>
@@ -39,5 +38,5 @@
       </div>
     </div>
   </body>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </html>
