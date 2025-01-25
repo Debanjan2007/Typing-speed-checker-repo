@@ -20,7 +20,7 @@
     align-items: center;
 }
 .result{
-    display: none;
+    display: flex;
 }
 .noshow{
     display: none;

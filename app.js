@@ -3,12 +3,12 @@ import { Text } from "./RandomText.js"; //importing random texts from RandomText
 
 let result = document.querySelector(".result");
 let para = document.querySelector(".para");
-let userinputBox = document.querySelector(".userinp");
+let userinputBox = document.querySelector(".userinp");//userinp
 let genbtn = document.querySelector(".generate");
 let timer = document.querySelector(".timer");
-let timerCountStart = document.querySelector(".start");
 let timerCountStop = document.querySelector(".stop");
 let userInputText = document.querySelector("#userinput");
+let hero = document.querySelector(".hero-sec");
 let data;
 let userReset = document.querySelector(".reset");
 let totalWords = 0;
@@ -20,13 +20,15 @@ let currenTime;
 
 function generateTxt() {
   userinputBox.classList.remove("noshow");
-  textKey = Math.floor(Math.random() * 15);
+  textKey = Math.ceil(Math.random() * 15);
   console.log(textKey);
   genbtn.classList.add("noshow");
   data = Text[textKey];
   para.textContent = data;
   wordChecker(data);
   setTimeout(start(), 3000);
+  userReset.disabled = false;
+  timerCountStop.disabled = false;
   userInputText.focus();
 }
 genbtn.addEventListener("click", generateTxt);
@@ -59,12 +61,10 @@ const start = () => {
 };
 
 const stop = () => {
-  // console.log("STOP");
   clearInterval(currenTime);
-  // console.log(min);
-  // console.log(sec);
   userInputText.disabled = true;
   speedCheck();
+  result.classList.remove("noshow");
 };
 timerCountStop.addEventListener("click", stop);
 
@@ -72,25 +72,43 @@ function speedCheck() {
   if (userInputText.value === "") {
     alert("Please enter some text first!");
   } else {
+    if(min === 1){
     alert("Time's up!");
     wordChecker(userInputText.value);
     let second = min * 60 + sec; // 1 * 60 + 0 this will happen
-    // console.log(second);
     if (second > 0) {
       let speedWPM = Math.floor((userInputedWords * 60) / second);
       console.log(`Speed: ${speedWPM} WPM`);
     } else {
       console.log("Cannot calculate speed, time is zero.");
     }
+    }
+    else{
+    wordChecker(userInputText.value);
+    let second = min * 60 + sec; // 1 * 60 + 0 this will happen for a full minute
+    if (second > 0) {
+      let speedWPM = Math.floor((userInputedWords * 60) / second);
+      console.log(`Speed: ${speedWPM} WPM`);
+    } else {
+      console.log("Cannot calculate speed, time is zero.");
+    }
+    }
+    
   }
 }
 
 const reset = () => {
   userInputText.value = "";
   para.textContent = "";
-  genbtn.classList.remove("noshow");
+  console.log("reset!");
   clearInterval(currenTime);
   timer.innerText = "00:00";
+  sec = 0;
+  min = 0;
+  timerCountStop.disabled = true;
   userInputText.disabled = true;
+  userinputBox.classList.add("noshow");
+  result.classList.add("noshow");
+  genbtn.classList.remove("noshow");
 }
 userReset.addEventListener("click", reset);
